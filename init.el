@@ -179,6 +179,13 @@
 (setcdr (assq 'html rst-compile-toolsets)
       '("rst2html" ".html"))
 
+;; asciidoc
+(autoload 'doc-mode "doc-mode" nil t)
+;;(add-to-list 'auto-mode-alist '("\\.txt$" . doc-mode))
+(add-hook 'doc-mode-hook
+	  '(lambda ()
+	     (turn-on-auto-fill)
+	     (require 'asciidoc)))
 
 ;;python语法支持
 (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
