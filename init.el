@@ -109,12 +109,11 @@
 ;; Section3: 操作系统相关的设置
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 设置buffer的默认目录，MS-Windows下尤其需要，因为它的默认值是emacs程序所在目录
 (if (or (string= system-type "windows-nt") (string= system-type "ms-dos"))
-    (setq default-directory "C:/Documents and Settings/foo/My Documents/"
-	  ange-ftp-tmp-name-template "C:/docume~1/alluse~1/docume~1/home/.emacs.d/tmp"))
+    (load "~/.emacs.d/mswin.el"))
+
 (if (string= system-type "gnu/linux")
-    (server-start))
+    (load "~/.emacs.d/linux.el"))
 
 ;; Section3 End
 
@@ -123,11 +122,6 @@
 ;; Section4: 界面相关设置
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 在信息栏显示时间
-;;(setq display-time-24hr-format t)
-(setq display-time-day-and-date t)
-(display-time)
-
 ;; 我的Color theme，标签栏
 (require 'color-theme)
 (require 'tabbar)
@@ -135,10 +129,6 @@
   	(color-theme-gnome2)
 	(tabbar-mode)
 )
-
-(require 'english-menu)
-(require 'chinese-menu)
-(require 'mule-menu)
 
 ;; Section4 End
 
@@ -192,7 +182,8 @@
 (setq interpreter-mode-alist (cons '("python" . python-mode)
                               interpreter-mode-alist))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
-(require 'ipython)
+(if (executable-find "ipython")
+	(require 'ipython))
 
 ;;xml
 (load "rng-auto.el")
