@@ -288,7 +288,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Section10: 开发环境－ecb、cedet
+;; Section10: 开发环境
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -322,6 +322,10 @@
 	    ;;}}}
 	    ))
 
+;; yasnippet
+(require 'yasnippet) ;; not yasnippet-bundle
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/misc/snippets/")
 
 ;; Section10 End
 
