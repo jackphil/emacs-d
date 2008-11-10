@@ -110,10 +110,10 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (if (or (string= system-type "windows-nt") (string= system-type "ms-dos"))
-    (load "~/.emacs.d/mswin.el"))
+    (load "mswin.el"))
 
 (if (string= system-type "gnu/linux")
-    (load "~/.emacs.d/linux.el"))
+    (load "linux.el"))
 
 ;; Section3 End
 
@@ -184,6 +184,19 @@
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 (if (executable-find "ipython")
 	(require 'ipython))
+
+;; pymacs, ropemacs
+(setq pymacs-load-path '("~/.emacs.d/misc/rope-0.9.1"
+                           "~/.emacs.d/misc/ropemacs-0.6"))
+(defun load-ropemacs ()
+    "Load pymacs and ropemacs"
+    (interactive)
+    (require 'pymacs)
+    (pymacs-load "ropemacs" "rope-")
+    ;; Automatically save project python buffers before refactorings
+    (setq ropemacs-confirm-saving 'nil)
+  )
+(global-set-key "\C-xpl" 'load-ropemacs)
 
 ;;xml
 (load "rng-auto.el")
@@ -291,7 +304,6 @@
 ;; Section10: 开发环境
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; auto-insert设置
 (require 'autoinsert)
 ;; Adds hook to find-files-hook
@@ -301,26 +313,18 @@
 ;;(setq auto-insert-directory "~/.emacs.d/templates/")
 ;; 插入时不提示
 (setq auto-insert-query nil)
+(load "myskeletons.el")
 (setq auto-insert-alist '(
-	    ;;("\\.txt$" . "rst.txt")
-	    ;;{{{ Rst
-	    (("\\.txt$" . "Rst File")
-	     nil
-	     ".. -*- coding: utf-8 -*-\n"
-	     "\n"
-	     ""_"\n"
-             "\n"
-	     "..\n"
-	     "   Local Variables:\n"
-             "   mode: rst\n"
-             "   indent-tabs-mode: nil\n"
-             "   sentence-end-double-space: t\n"
-             "   fill-column: 70\n"
-             "   End:"
-	     (rst-mode)
-	    )
-	    ;;}}}
-	    ))
+            ;;{{{ Rst
+            ;; rst-mode不是major mode，所以不能根据rst-mode触发
+            (("\\.rst$" . "Rst File") . rst-skeleton)
+            ;;}}}
+
+            ;;{{{ Python
+            ((python-mode . "Python File") . python-skeleton)
+            ;;}}}
+            )
+)
 
 ;; yasnippet
 (require 'yasnippet) ;; not yasnippet-bundle
