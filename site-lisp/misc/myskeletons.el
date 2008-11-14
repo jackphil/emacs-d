@@ -14,7 +14,7 @@
 
 (define-skeleton python-skeleton
   "Python File" nil
-  "#! /usr/bin/env python\n"
+  "#!/usr/bin/env python\n"
   "# -*- coding: utf-8 -*-\n"
   "\n"
   "import "_"\n"

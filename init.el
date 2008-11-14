@@ -85,6 +85,14 @@
 	try-complete-lisp-symbol-partially
 	try-complete-lisp-symbol))
 
+;; 自动补全括号和引号
+(setq skeleton-pair t)
+(global-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "[") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+
 ;; 用ASCII绘制表格
 (require 'table)
 (add-hook 'text-mode-hook 'table-recognize)
