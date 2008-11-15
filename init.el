@@ -93,6 +93,57 @@
 (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
 (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
 
+;; 移动一行
+(global-set-key [(meta up)] 'move-line-up)
+(global-set-key [(meta down)] 'move-line-down) 
+
+(defun move-line (&optional n)
+ "Move current line N (1) lines up/down leaving point in place."
+ (interactive "p")
+ (when (null n)
+    (setq n 1))
+ (let ((col (current-column)))
+    (beginning-of-line)
+    (next-line 1)
+    (transpose-lines n)
+    (previous-line 1)
+    (forward-char col)))
+(defun move-line-up (n)
+ "Moves current line N (1) lines up leaving point in place."
+ (interactive "p")
+ (move-line (if (null n) -1 (- n)))) 
+
+(defun move-line-down (n)
+ "Moves current line N (1) lines down leaving point in place."
+ (interactive "p")
+ (move-line (if (null n) 1 n))) 
+
+;; 在行中开启新的一行
+(global-set-key [(control o)] 'vi-open-next-line)
+
+(defun vi-open-next-line (arg)
+ "Move to the next line (like vi) and then opens a line."
+ (interactive "p")
+ (end-of-line)
+ (open-line arg)
+ (next-line 1)
+ (indent-according-to-mode)) 
+
+;; 如果没有选中区域，在行中复制、剪切一行
+(defadvice kill-ring-save (before slickcopy activate compile)
+  "When called interactively with no active region, copy a single line instead."
+  (interactive
+   (if mark-active (list (region-beginning) (region-end))
+     (list (line-beginning-position)
+   (line-beginning-position 2)))))
+
+(defadvice kill-region (before slickcut activate compile)
+  "When called interactively with no active region, kill a single line instead."
+  (interactive
+   (if mark-active (list (region-beginning) (region-end))
+     (list (line-beginning-position)
+   (line-beginning-position 2)))))
+
 ;; 用ASCII绘制表格
 (require 'table)
 (add-hook 'text-mode-hook 'table-recognize)
