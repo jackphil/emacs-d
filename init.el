@@ -12,7 +12,8 @@
 ;;(setq auto-save-default nil)
 (setq auto-save-file-name-transforms
          '(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'" "~/.emacs.d/tmp/\\2" t)
-                   ("\\`/?\\([^/]*/\\)*\\([^/]*\\)\\'" "~/.emacs.d/tmp/\\2" t))) 
+                   ("\\`/?\\([^/]*/\\)*\\([^/]*\\)\\'" "~/.emacs.d/tmp/\\2" t)))
+(setq auto-save-list-file-prefix "~/.emacs.d/tmp/.saves-")
 
 ;;语法加亮功能
 (setq enable-local-variables t)
@@ -269,6 +270,9 @@
                (eq (cdr pair) 'html-mode))
            (setcdr pair 'nxml-mode)))
      magic-mode-alist)
+
+;;pdf
+(setq doc-view-cache-directory "~/.emacs.d/tmp")
 
 ;; Section6 End
 

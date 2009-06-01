@@ -1,0 +1,15 @@
+* 添加了emacsclient(w)在MS Windows下使用的注册表文件，右键菜单
+* 如果没有选中区域，C-w和M-w剪切或复制当前行
+* 在行中任意处C-o都会新建一行（保持缩进）而不打断当前行
+* 使用M-up和M-down方便的上下移动当前行
+* 自动补全括号、引号
+v0.2
+* 调整了目录结构
+* 添加了pymacs, rope, ropemacs
+* 修改了autoinsert和skeleton的设置
+* 添加了yasnippet: http://code.google.com/p/yasnippet/
+* 自动检测是否加载ipython
+* 针对Windows和Linux平台的设置放在专门的文件中：mswin.el和linux.el
+
+v0.1
+* 以前积累的设置，删除部分很久没用的。
