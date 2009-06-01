@@ -1,3 +1,6 @@
+* 调整了自动保存目录
+* 查看pdf文件时的临时目录设置
+* 添加文件readme.txt, changelog.txt
 * 添加了emacsclient(w)在MS Windows下使用的注册表文件，右键菜单
 * 如果没有选中区域，C-w和M-w剪切或复制当前行
 * 在行中任意处C-o都会新建一行（保持缩进）而不打断当前行

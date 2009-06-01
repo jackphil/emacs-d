@@ -11,7 +11,7 @@ site-lisp/misc/mswin.el: 设置buffer默认目录中的目录名
 
 gnus/gnus.el: 帐户设置（pop地址，用户名，密码等）
 
-gnus/bbdb: 通讯录数据库
+mswin/emacsclientw.reg: 几个目录设置
 
 Windows
 ====
