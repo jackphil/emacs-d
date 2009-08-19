@@ -1,3 +1,8 @@
+final
+* 添加了folding
+* 为python-mode添加outline支持
+* 添加了默认窗口大小设定代码，不过在使用新字体后，设定不起作用，目前该段代码被注释掉
+* 修改了字体配置，linux下使用雅黑MONO，Windows下使用文泉驿等宽正黑，均是等宽字体
 * 调整了自动保存目录
 * 查看pdf文件时的临时目录设置
 * 添加文件readme.txt, changelog.txt

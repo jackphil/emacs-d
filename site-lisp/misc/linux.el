@@ -13,3 +13,6 @@
 (require 'english-menu)
 (require 'chinese-menu)
 (require 'mule-menu)
+
+;; 默认字体：等宽，中英文1:2
+(set-default-font "雅黑MONO:size=18")

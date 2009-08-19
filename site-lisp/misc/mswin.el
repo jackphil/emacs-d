@@ -13,22 +13,5 @@
 (prefer-coding-system 'chinese-gbk)
 (prefer-coding-system 'utf-8)
 
-;; 字体
-(create-fontset-from-fontset-spec
-"-outline-Courier New-normal-r-normal-normal-13-97-96-96-c-*-fontset-chinese")
-(set-fontset-font
-"fontset-default" nil
-"-outline-新宋体-normal-r-normal-normal-14-*-96-96-c-*-iso10646-1" nil 'prepend)
-(set-fontset-font
-"fontset-chinese" 'kana
-"-outline-新宋体-normal-r-normal-normal-14-*-96-96-c-*-iso10646-1" nil 'prepend)
-(set-fontset-font
-"fontset-chinese" 'han
-"-outline-新宋体-normal-r-normal-normal-14-*-96-96-c-*-iso10646-1" nil 'prepend)
-(set-fontset-font
-"fontset-chinese" 'cjk-misc
-"-outline-新宋体-normal-r-normal-normal-14-*-96-96-c-*-iso10646-1" nil 'prepend)
-(set-fontset-font
-"fontset-chinese" 'symbol
-"-outline-新宋体-normal-r-normal-normal-14-*-96-96-c-*-iso10646-1" nil 'prepend)
-(set-default-font "fontset-chinese")
+;; 默认字体：等宽，中英文1:2，字体小了显示粗糙
+(set-default-font "文泉驿等宽正黑:size=18")

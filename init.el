@@ -190,6 +190,10 @@
 	(tabbar-mode)
 )
 
+;; 启动时默认窗口大小
+;;(setq default-frame-alist
+;; '((height . 30) (width . 80)))
+
 ;; Section4 End
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -223,6 +227,10 @@
 ;; Section6: 语法文件
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; folding
+(if (load "folding" 'nomessage 'noerror)
+    (folding-mode-add-find-file-hook))
+
 ;rst语法
 (require 'rst)
 (add-hook 'text-mode-hook 'rst-text-mode-bindings)
@@ -242,6 +250,31 @@
 (setq interpreter-mode-alist (cons '("python" . python-mode)
                               interpreter-mode-alist))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
+
+;; python-mode-hook
+(add-hook 'python-mode-hook 'my-python-hook)
+;; outline for python
+;; judge level by column
+(defun py-outline-level ()
+  (let (buffer-invisibility-spec)
+    (save-excursion
+      (skip-chars-forward "\t ")
+      (+ (/ (current-column) 4) 1))))
+
+;; called after python mode is enabled
+(defun my-python-hook ()
+  ;; what is headings
+  (setq outline-regexp "[ \t]*\\(def\\|class\\|if\\|elif\\|else\\|while\\|for\\|try\\|except\\|finally|with\\) ")
+  ;; enable our level computation
+  (setq outline-level 'py-outline-level)
+  ;; do not use their \C-c@ prefix, too hard to type. Note this overides some python mode bindings
+  (setq outline-minor-mode-prefix "\C-c")
+  ;; turn on outline mode
+  (outline-minor-mode t)
+  ;; initially hide all but the headers
+  (hide-body)
+)
+
 (if (executable-find "ipython")
 	(require 'ipython))
 
