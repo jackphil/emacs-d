@@ -222,7 +222,7 @@
 ;;#elisp
 (add-hook 'emacs-lisp-mode-hook
 	  (lambda() (setq outline-regexp "^[;]+#")
-	  (setq outline-minor-mode-prefix "\C-c")
+	  ;;(setq outline-minor-mode-prefix "\C-c")
 	  ;; turn on outline mode
 	  (outline-minor-mode t)
 ))
@@ -243,8 +243,6 @@
   (setq outline-regexp "[ \t]*\\(def\\|class\\|if\\|elif\\|else\\|while\\|for\\|try\\|except\\|finally|with\\) ")
   ;; enable our level computation
   (setq outline-level 'py-outline-level)
-  ;; do not use their \C-c@ prefix, too hard to type. Note this overides some python mode bindings
-  (setq outline-minor-mode-prefix "\C-c")
   ;; turn on outline mode
   (outline-minor-mode t)
   ;; initially hide all but the headers
@@ -275,6 +273,15 @@
     (setq ropemacs-confirm-saving 'nil)
   )
 (global-set-key "\C-xpl" 'load-ropemacs)
+
+;;# shell script
+;; outline symbol is "#" and "$"
+;; they are close on the keyboard
+(add-hook 'sh-mode-hook
+	  (lambda() (setq outline-regexp "^[#]+[$]")
+	  ;; turn on outline mode
+	  (outline-minor-mode t)
+))
 
 ;;#xml
 (load "rng-auto.el")
