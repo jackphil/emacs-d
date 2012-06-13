@@ -28,20 +28,14 @@
 ;;#界面设置
 ;;;#如果是图形界面才使用color-theme和标签页
 (when window-system
-  (require 'color-theme)
-  (require 'tabbar)
-  (color-theme-gnome2)
-  (tabbar-mode)
+  (load-theme 'tango-dark t)
 )
 
 ;;;#隐藏菜单和工具栏
-(tool-bar-mode nil) 
-(menu-bar-mode nil)
+(tool-bar-mode -1) 
+(menu-bar-mode -1)
 
 ;;;#启动时默认窗口大小，见linux.el
-
-;;#buffer中显示行号，M-x setnu-mode开关
-(require 'setnu+)
 
 ;;#显示列号
 (column-number-mode t)
