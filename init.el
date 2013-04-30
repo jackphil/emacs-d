@@ -19,6 +19,10 @@
 )
 (setq auto-save-list-file-prefix "~/.emacs.d/tmp/.saves-")
 
+;;#软件包服务器
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+			 ("marmalade" . "http://marmalade-repo.org/packages/")))
+
 ;;#历史记录
 (require 'session)
 (setq session-save-file "~/.emacs.d/.session"
@@ -26,7 +30,7 @@
 (add-hook 'after-init-hook 'session-initialize)
 
 ;;#界面设置
-;;;#如果是图形界面才使用color-theme和标签页
+;;;#如果是图形界面才使用color theme
 (when window-system
   (load-theme 'tango-dark t)
 )
@@ -79,6 +83,17 @@
 (setq enable-local-variables t)
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
+
+;;#字体，透明度，窗口位置大小
+(setq default-frame-alist
+      (append ;;"文泉驿等宽正黑-18" or "文泉驿等宽正黑:size=18"
+       '((font . "文泉驿等宽正黑") 
+   ;;透明度
+   (alpha . (85 50))
+   ;;左上角坐标
+   (top . 0) (left . 0)
+   ;;窗口大小：行数和列数
+   (height . 39) (width . 80))))
 
 ;;#自动补全括号和引号
 (setq skeleton-pair t)
