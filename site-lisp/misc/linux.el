@@ -3,3 +3,7 @@
 ;;(setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 (display-time)
+
+;#窗口大小
+(add-to-list 'default-frame-alist '(height . 39))
+(add-to-list 'default-frame-alist '(width . 80))

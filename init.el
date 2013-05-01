@@ -39,7 +39,11 @@
 (tool-bar-mode -1) 
 (menu-bar-mode -1)
 
-;;;#启动时默认窗口大小，见linux.el
+;;#字体，透明度，窗口位置大小
+(add-to-list 'default-frame-alist '(font . "文泉驿等宽正黑"))
+(add-to-list 'default-frame-alist '(alpha . (85 50)))
+(add-to-list 'default-frame-alist '(top . 0) )
+(add-to-list 'default-frame-alist '(left . 0))
 
 ;;#显示列号
 (column-number-mode t)
@@ -83,17 +87,6 @@
 (setq enable-local-variables t)
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
-
-;;#字体，透明度，窗口位置大小
-(setq default-frame-alist
-      (append ;;"文泉驿等宽正黑-18" or "文泉驿等宽正黑:size=18"
-       '((font . "文泉驿等宽正黑") 
-   ;;透明度
-   (alpha . (85 50))
-   ;;左上角坐标
-   (top . 0) (left . 0)
-   ;;窗口大小：行数和列数
-   (height . 39) (width . 80))))
 
 ;;#自动补全括号和引号
 (setq skeleton-pair t)

@@ -12,3 +12,7 @@
 ;;#可以设置多个，注意后设置的使用时优先
 (prefer-coding-system 'chinese-gbk)
 (prefer-coding-system 'utf-8)
+
+;#窗口大小
+(add-to-list 'default-frame-alist '(height . 34))
+(add-to-list 'default-frame-alist '(width . 80))

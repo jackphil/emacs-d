@@ -1,16 +1,16 @@
 == 总的说明
 
-字体使用http://wenq.org[文泉驿等宽正黑]
+字体使用 http://wenq.org[文泉驿等宽正黑]
 
 == Windows
 
-Windows用户建议使用http://ftp.gnu.org/gnu/emacs/windows/[预编译版]。下载并解压为任意目录，如emacs24
+Windows用户建议使用 http://ftp.gnu.org/gnu/emacs/windows/[预编译版] 。下载并解压为任意目录，如emacs24
 
 将本配置系统解压到任意目录，如justeditor，并将justeditor\mswin目录下的emacs.exe放到emacs24目录下，运行一遍，会在emacs24目录下生成home\.emacs.d目录，将justeditor目录中文件复制到emacas24\.emacs.d目录中。
 
 NOTE: 为了使Windows版emacs更绿色，home目录被设置为emacs程序目录的子目录，如上面安装说明中的emacs24\home
 
-推荐使用emacsclientw，更多内容或使用gnuclient(w) 参见http://jackphil.blogspot.com/2008/11/emacsclientwgnuclientw.html[emacsclient(w)和gnuclient(w)]，导入注册表文件mswin\emacsclientw.reg，以便与系统更好的集成，导入前注意根据实际情况修改reg文件中的几个目录。
+推荐使用emacsclientw，更多内容或使用gnuclient(w) 参见 http://jackphil.blogspot.com/2008/11/emacsclientwgnuclientw.html[emacsclient(w)和gnuclient(w)] ，导入注册表文件mswin\emacsclientw.reg，以便与系统更好的集成，导入前注意根据实际情况修改reg文件中的几个目录。
 
 == 其他
 
